@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<!--thymeleaf 데이터 받는 포맷 이용해서 controller의 모델에 지정한 key값을 통해 value 가져옴-->
+<p th:text="'hi. ' + ${data}" >안녕하세요. 손님</p>
+</body>
+</html>
