@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 // 스프링 컨테이너에 초기 run 시에 MemberService를 등록하기 위한 annotation
-@Service
+//@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    // test 코드와 동일 객체 사용하기 위해 constructor 사용
-    // dependency injection
-    @Autowired
+    // test 코드와 동일 객체 사용하기 위해 constructor 사용 - 생성자 주입 방식
+    // dependency injection - autowired
+//    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

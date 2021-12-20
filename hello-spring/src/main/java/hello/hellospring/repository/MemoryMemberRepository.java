@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
 
-// 스프링 컨테이너에 초기 run 시에 MemberRepository를 등록하기 위한 annotation
-@Repository
+// 스프링 컨테이너에 초기 run 시에 MemberRepository를 등록하기 위한 annotation (component scan)
+//@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> store = new HashMap<>();
