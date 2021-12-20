@@ -6,12 +6,16 @@ import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 // 스프링 컨테이너에 초기 run 시에 MemberService를 등록하기 위한 annotation
 //@Service
+
+//jpa 쓸 때 데이터 저장/변경 시에는 항상 transaction이 있어야 한다
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -27,9 +31,17 @@ public class MemberService {
      * 회원가입
      */
     public Long join(Member member) {
-        validateDuplicateMember(member); // 중복 회원 검증
-        memberRepository.save(member);
-        return member.getId();
+
+        long start = System.currentTimeMillis();
+
+        try {
+            validateDuplicateMember(member); // 중복 회원 검증
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = fini
+        }
     }
 
     private void validateDuplicateMember(Member member) {
